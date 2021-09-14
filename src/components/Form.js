@@ -18,8 +18,6 @@ const Form = () => {
     const [send, setSend] = useState(false);
 
      const onSubmit = (data) =>{
-         console.log("hola nata")
-        console.log(data)
 
         let personCategory;
         let age = data.age;
@@ -66,7 +64,7 @@ const Form = () => {
                         placeholder= "Ingrese nombre"
                         type = "text"
                         name = "name"
-                        {...register('name', { required: true, maxLength: 100, pattern: /^[A-Za-z]+$/i })} />
+                        {...register('name', { required: true, maxLength: 50, pattern: /^[a-zA-ZÀ-ÿ\s]{1,40}$/ })} />
                         <span className="text-danger text-small d-block mb-2">
                         {errors.name?.type === 'required' && "El campo nombre es requerido"}
                         {errors.name?.type === 'pattern' && "El campo no puede contener numeros ni caracteres especiales"
@@ -93,7 +91,7 @@ const Form = () => {
                         <select 
                         className="form-control"
                         name = "occupation"
-                        {...register("occupation",{ required: true, pattern: /^[A-Za-z]+$/i})}>
+                        {...register("occupation",{ required: true, pattern: /^[a-zA-Z]+$/})}>
                             <option selected >Ocupación</option>
                             <option value="Estudiante">Estudiante</option>
                             <option value="Empleado">Empleado</option>

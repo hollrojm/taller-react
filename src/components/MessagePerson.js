@@ -1,69 +1,62 @@
-import React, { useState, useEffect, Fragment} from 'react'
+import React, { useState, useEffect, Fragment } from 'react'
+import swal from 'sweetalert'
 
-const ageByValues = {
-    kid:['Tierno', 'Angelical'],
-    young:['Extrovertido', 'Alegre'],
-    adult:['Trabjador', 'Compromiso'],
-    old:['Paciente', 'Cariñoso']
 
-}
+
 
 const valuesByOccupations = {
-    student:['Cariñoso', 'Alegre'],
-    employee:['Calidad', 'Colaborador'],
-    retired:['Sincero', 'Catedratico']
-    
+    student: ['Cariñoso', 'Alegre', 'Responsable'],
+    employee: ['Empatico', 'Colaborador', 'Comunicativo'],
+    retired: ['Agradecido', 'Mesurado', 'Cauto']
 
 }
 
-const personData = ({personData})=>{
-    console.log(personData, "personData");
-}
+const MessagePerson = ({ personData }) => {
 
-    let [personM, setPersonM] = useState(personMessage);
+
+    let [person, setPerson] = useState(personData);
     let [valueByOccupations, setValueByOccupations] = useState([]);
     let [ageByValue, setAgeByValue] = useState([]);
-    
 
-    useEffect(()=>{
 
-        if (personMessage.occupation=="Estudiante") {
+    useEffect(() => {
+
+        if (personData.occupation == "Estudiante") {
             setValueByOccupations(valuesByOccupations.student)
         }
-        else if(userInfo.ocupacion=="Empleado") {
+        else if (personData.occupation == "Empleado") {
             setValueByOccupations(valuesByOccupations.employee)
         }
-        
-        else if(userInfo.ocupacion=="Jubilado"){
+
+        else if (personData.occupation == "Jubilado") {
             setValueByOccupations(valuesByOccupations.retired)
-    
-        }
-    
-    
-        if (personM.category == "Niño") {
-            setAgeByValue(ageByValues.kid)
-        }
-        else if(personM.category == "Joven") {
-            setAgeByValue(ageByValues.young)
-        }
-        else if(personM.category == "Adulto") {
-            setAgeByValue(ageByValues.adult)
-        }
-        else{
-            setAgeByValues(ageByValues.old)
+
         }
 
+    }, {});
+
+     
 
 
-    },{});
+    return (
+        <>
 
 
-    // return(
-    //     <Fragment>
+            <div className="col-md-10 col-lg-10 row">
+                <hr className="my-4" />
+                <div class="alert alert-secondary" role="alert">
+
+                    Al {person.category} de {person.age} años de edad, 
+                    le recomendamos tener presente ser,
+                    {valueByOccupations.map(value => <em>{" " + value}  </em>)} 
+                    como principales valores para obtener un buen resultado como {person.occupation}.
+
+                </div>
+            </div>
 
 
+        </>
+    );
+    }            
 
-
-
-    //     </Fragment>
-    // )
+    export default MessagePerson;
