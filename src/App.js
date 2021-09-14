@@ -1,8 +1,10 @@
-import Form from './component-form/Form'
+
 import './App.css';
+import Form from './components/Form';
 
 function App() {
   return (
+    
     <Form />
     
   );
